@@ -25,6 +25,9 @@ and what you should write is the favNum function that makes the code above work,
 
 
   //Code Here for first
+var first = function(array, cb) {
+  cb(array[0]);
+};
   
 var names = ['Tyler', 'Cahlan', 'Ryan', 'Colt', 'Tyler', 'Blaine', 'Cahlan'];
 first(names, function(firstName){
@@ -39,6 +42,9 @@ first(names, function(firstName){
 
 
   //Code Here for last
+var last = function(array, cb) {
+  cb(array[array.length - 1]);
+};
 
 var names = ['Tyler', 'Cahlan', 'Ryan', 'Colt', 'Tyler', 'Blaine', 'Cahlan'];
 last(names, function(lastName){
@@ -58,6 +64,11 @@ last(names, function(lastName){
 
   //Code Here for multiply
 
+var multiply = function(num1, num2, cb) {
+  cb(num1 * num2);
+};
+
+
 multiply(4, 3, function(answer){
   console.log('The answer is ', answer); //should console.log 12
 })
@@ -73,6 +84,18 @@ multiply(4, 3, function(answer){
 
 
   //Code Here for contains
+
+function contains(array, name, cb) {
+  for(var i = 0; i < array.length; i++) {
+    if(name === array[i]) {
+      return cb(true);
+    }
+  }
+  return cb(false);
+}
+
+
+
 
 var names = ['Tyler', 'Cahlan', 'Ryan', 'Colt', 'Tyler', 'Blaine', 'Cahlan'];
 contains(names, 'Colt', function(result){
@@ -94,6 +117,18 @@ contains(names, 'Colt', function(result){
 
     //Code Here for uniq
 
+function uniq(array, cb) {
+  for(var i = 0; i < array.length; i++) {
+    for(var j = 0; j < array.length; j++) {
+      if(array[i] === array[j] && i !== j) {
+        array.splice(i, 1);
+      }
+    }
+  }
+  cb(array);
+}
+
+
 var names = ['Tyler', 'Cahlan', 'Ryan', 'Colt', 'Tyler', 'Blaine', 'Cahlan'];
 uniq(names, function(uniqArr){
   console.log('The new names array with all the duplicate items removed is ', uniqArr);
@@ -109,6 +144,13 @@ uniq(names, function(uniqArr){
 
 
     //Code Here for each
+
+var each = function(array, cb) {
+  for(var i = 0; i < array.length; i++) {
+    cb(array[i], i);
+  }
+}
+
 
 var names = ['Tyler', 'Cahlan', 'Ryan', 'Colt', 'Tyler', 'Blaine', 'Cahlan'];
 each(names, function(item, indice){
@@ -126,6 +168,15 @@ each(names, function(item, indice){
 
 
  //code here for getUserById
+
+var getUserById = function(array, id, cb) {
+  for(var i = 0; i < array.length; i++) {
+    if(array[i].id === id) {
+      cb(array[i]);
+    }
+  }
+}
+
 
 var users = [
   {
